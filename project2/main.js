@@ -107,4 +107,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  /* ── Dify chatbot fixed position fix ── */
+  const fixDifyPosition = () => {
+    const btn = document.getElementById('dify-chatbot-bubble-button');
+    const win = document.getElementById('dify-chatbot-bubble-window');
+    if (btn) {
+      btn.style.setProperty('position', 'fixed', 'important');
+      btn.style.setProperty('bottom', '24px', 'important');
+      btn.style.setProperty('right', '24px', 'important');
+      btn.style.setProperty('z-index', '9999', 'important');
+    }
+    if (win) {
+      win.style.setProperty('position', 'fixed', 'important');
+      win.style.setProperty('bottom', '90px', 'important');
+      win.style.setProperty('right', '24px', 'important');
+      win.style.setProperty('z-index', '9999', 'important');
+    }
+    if (!btn || !win) {
+      setTimeout(fixDifyPosition, 300);
+    }
+  };
+  setTimeout(fixDifyPosition, 1000);
+
 });
