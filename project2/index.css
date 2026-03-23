@@ -98,25 +98,20 @@
 /* ── Ticker ── */
 .ticker-wrap {
   background: var(--black);
-  color: var(--white);
+  color: var(--gray-300);
   overflow: hidden;
   padding: 14px 0;
+  white-space: nowrap;
 }
 
 .ticker-track {
-  display: flex;
-  gap: 28px;
-  width: max-content;
-  animation: ticker 28s linear infinite;
+  display: inline-flex;
+  gap: 32px;
+  animation: ticker 30s linear infinite;
   font-family: var(--font-en);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-}
-
-.ticker-track span:nth-child(even) {
-  color: var(--mid-blue);
 }
 
 @keyframes ticker {
@@ -124,26 +119,54 @@
   to   { transform: translateX(-50%); }
 }
 
-/* ── What's New ── */
-.section-header {
-  margin-bottom: 48px;
+/* ── Section base ── */
+.section {
+  padding: 96px 0;
 }
 
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-title {
+  font-family: var(--font-en);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-family: var(--font-jp);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  letter-spacing: 0.1em;
+}
+
+.section-footer {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* ── News ── */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
-  margin-bottom: 40px;
 }
 
 .news-card a {
   display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .news-img-wrap {
   position: relative;
   overflow: hidden;
   aspect-ratio: 4/3;
+  margin-bottom: 20px;
 }
 
 .news-img-wrap img {
@@ -154,18 +177,19 @@
 }
 
 .news-card:hover .news-img-wrap img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .news-tag {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 12px;
+  left: 12px;
   background: var(--black);
   color: var(--white);
   font-family: var(--font-en);
   font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 2px;
@@ -176,39 +200,32 @@
 }
 
 .news-body {
-  padding: 20px 4px 4px;
+  padding: 0 4px;
 }
 
 .news-date {
-  display: block;
   font-family: var(--font-en);
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
   color: var(--gray-500);
+  letter-spacing: 0.05em;
+  display: block;
   margin-bottom: 8px;
 }
 
 .news-body h3 {
-  font-family: var(--font-jp);
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 8px;
-  color: var(--black);
+  margin-bottom: 10px;
   line-height: 1.5;
 }
 
 .news-body p {
   font-size: 0.85rem;
   color: var(--gray-500);
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
-.section-footer {
-  text-align: center;
-  margin-top: 8px;
-}
-
-/* ── Categories ── */
+/* ── Category ── */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -217,12 +234,15 @@
 
 .category-card {
   display: block;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
 }
 
 .category-img-wrap {
   position: relative;
-  overflow: hidden;
   aspect-ratio: 3/4;
+  overflow: hidden;
 }
 
 .category-img-wrap img {
@@ -239,215 +259,105 @@
 .category-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(5,10,15,0.75) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(5,10,15,0.75) 0%, transparent 50%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 28px;
+  padding: 28px 24px;
   color: var(--white);
-  transition: background var(--transition);
-}
-
-.category-card:hover .category-overlay {
-  background: linear-gradient(to top, rgba(5,10,15,0.85) 0%, rgba(5,10,15,0.1) 100%);
 }
 
 .category-overlay h3 {
-  font-size: 1.3rem;
+  font-family: var(--font-en);
+  font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
 }
 
 .category-overlay p {
   font-family: var(--font-jp);
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.75);
-  margin-top: 4px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 12px;
 }
 
 .category-arrow {
-  display: inline-block;
-  margin-top: 12px;
   font-family: var(--font-en);
   font-size: 1rem;
-  transform: translateX(0);
-  transition: transform var(--transition);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
 }
 
 .category-card:hover .category-arrow {
-  transform: translateX(6px);
+  opacity: 1;
+  transform: translateX(0);
 }
 
-/* ── Featured Products ── */
+/* ── Featured products ── */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-bottom: 40px;
-}
-
-.product-card {
-  display: block;
-  position: relative;
-}
-
-.product-img-wrap {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 3/4;
-  background: var(--gray-100);
-}
-
-.product-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.product-card:hover .product-img-wrap img {
-  transform: scale(1.05);
-}
-
-.product-wishlist {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 34px;
-  height: 34px;
-  background: rgba(255,255,255,0.9);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity var(--transition), background var(--transition);
-  color: var(--gray-700);
-}
-
-.product-card:hover .product-wishlist {
-  opacity: 1;
-}
-
-.product-wishlist:hover {
-  background: var(--white);
-  color: var(--black);
-}
-
-.product-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background: var(--dark-blue);
-  color: var(--white);
-  font-family: var(--font-en);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  padding: 3px 9px;
-  border-radius: 2px;
-}
-
-.product-badge.new {
-  background: #c0392b;
-}
-
-.product-info {
-  padding: 14px 4px 4px;
-}
-
-.product-origin {
-  font-family: var(--font-en);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--mid-blue);
-  display: block;
-  margin-bottom: 5px;
-}
-
-.product-name {
-  font-family: var(--font-jp);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--black);
-  margin-bottom: 5px;
-}
-
-.product-note {
-  font-size: 0.78rem;
-  color: var(--gray-500);
-  margin-bottom: 8px;
-}
-
-.product-price {
-  font-family: var(--font-en);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--black);
-}
-
-.product-price span {
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--gray-500);
 }
 
 /* ── Philosophy ── */
 .philosophy-section {
   position: relative;
-  min-height: 520px;
-  display: flex;
-  align-items: center;
+  padding: 120px 0;
+  text-align: center;
+  color: var(--white);
   overflow: hidden;
 }
 
 .philosophy-bg {
   position: absolute;
-  inset: 0;
+  inset: -10%;
   background-size: cover;
   background-position: center;
+  will-change: transform;
 }
 
 .philosophy-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(5, 10, 15, 0.72);
+  background: rgba(5, 10, 15, 0.65);
 }
 
 .philosophy-content {
   position: relative;
   z-index: 2;
-  color: var(--white);
-  max-width: 600px;
-  padding: 80px 24px;
 }
 
 .philosophy-eyebrow {
   font-family: var(--font-en);
-  font-size: 0.72rem;
-  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--mid-blue);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.philosophy-content h2 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
+.philosophy-section h2 {
+  font-family: var(--font-en);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
 }
 
 .philosophy-text {
   font-family: var(--font-jp);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: rgba(255,255,255,0.8);
-  line-height: 1.9;
-  margin-bottom: 32px;
+  line-height: 2;
+  margin-bottom: 40px;
 }
 
-/* ── Cafe Teaser ── */
+/* ── Cafe teaser ── */
 .cafe-teaser-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -456,13 +366,15 @@
 }
 
 .cafe-teaser-desc {
+  font-family: var(--font-jp);
   font-size: 0.9rem;
   color: var(--gray-500);
-  line-height: 1.8;
-  margin-bottom: 24px;
+  line-height: 2;
+  margin: 16px 0 24px;
 }
 
 .cafe-list-preview {
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -470,7 +382,7 @@
 
 .cafe-list-preview li {
   font-family: var(--font-jp);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--gray-700);
   display: flex;
   align-items: center;
@@ -478,20 +390,20 @@
 }
 
 .cafe-list-preview li span {
-  color: var(--dark-blue);
-  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .cafe-teaser-img {
-  border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 4/3;
+  border-radius: var(--radius);
 }
 
 .cafe-teaser-img img {
   width: 100%;
-  height: 100%;
+  height: 480px;
   object-fit: cover;
+  display: block;
   transition: transform 0.6s ease;
 }
 
@@ -499,7 +411,7 @@
   transform: scale(1.03);
 }
 
-/* ── Instagram Grid ── */
+/* ── Instagram grid ── */
 .insta-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -516,13 +428,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease, filter 0.5s ease;
-  filter: grayscale(20%);
+  transition: transform 0.5s ease, opacity 0.3s ease;
 }
 
 .insta-item:hover img {
-  transform: scale(1.06);
-  filter: grayscale(0%);
+  transform: scale(1.08);
+  opacity: 0.85;
 }
 
 /* ── Responsive ── */
@@ -530,43 +441,41 @@
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .cafe-teaser-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
   .insta-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .hero-title { font-size: clamp(3rem, 12vw, 5rem); }
-  .hero-cta { flex-direction: column; align-items: center; }
+  .section {
+    padding: 64px 0;
+  }
 
   .news-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
   .category-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .category-img-wrap {
-    aspect-ratio: 16/9;
-  }
-
-  .products-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .cafe-teaser-inner {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  .cafe-teaser-img {
-    order: -1;
   }
 
   .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -583,6 +492,27 @@
   bottom: 24px !important;
   right: 24px !important;
   z-index: 9999 !important;
+  background-color: #3b2314 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+#dify-chatbot-bubble-button:hover {
+  background-color: #5a3520 !important;
+}
+
+#dify-chatbot-bubble-button svg {
+  display: none !important;
+}
+
+#dify-chatbot-bubble-button::before {
+  content: '' !important;
+  display: block !important;
+  width: 32px !important;
+  height: 32px !important;
+  background-image: url('../4304_color.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 50% !important;
 }
 
 #dify-chatbot-bubble-window {
@@ -592,3 +522,15 @@
   z-index: 9999 !important;
 }
 
+#dify-chatbot-bubble-window .bg-primary-600 {
+  background-color: #3b2314 !important;
+}
+
+#dify-chatbot-bubble-window .bg-primary-700 {
+  background-color: #2e1b0f !important;
+}
+
+#dify-chatbot-bubble-window .text-primary-600,
+#dify-chatbot-bubble-window .text-primary-700 {
+  color: #3b2314 !important;
+}
