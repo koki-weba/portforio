@@ -303,6 +303,128 @@
   gap: 24px;
 }
 
+.product-card {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.product-img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--gray-100);
+}
+
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-img-wrap img {
+  transform: scale(1.05);
+}
+
+.product-wishlist {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition), background var(--transition);
+  color: var(--gray-700);
+  z-index: 2;
+}
+
+.product-card:hover .product-wishlist {
+  opacity: 1;
+}
+
+.product-wishlist:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.product-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: var(--dark-blue);
+  color: var(--white);
+  font-family: var(--font-en);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 2px;
+}
+
+.product-badge.new {
+  background: var(--black);
+}
+
+.product-info {
+  padding: 14px 4px 4px;
+}
+
+.product-origin {
+  font-family: var(--font-en);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid-blue);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.product-name {
+  font-family: var(--font-jp);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.product-note {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+}
+
+.product-price {
+  font-family: var(--font-en);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.product-price span {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gray-500);
+}
+
 /* ── Philosophy ── */
 .philosophy-section {
   position: relative;
