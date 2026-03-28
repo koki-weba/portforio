@@ -235,14 +235,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-// ===== Chatbot toggle =====
-document.addEventListener('DOMContentLoaded', function () {
-    var toggle = document.getElementById('chatbot-toggle');
-    var wrapper = document.getElementById('chatbot-wrapper');
-    if (!toggle || !wrapper) return;
-
-    toggle.addEventListener('click', function () {
-        wrapper.classList.toggle('open');
-    });
-});
