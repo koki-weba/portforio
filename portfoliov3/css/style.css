@@ -3634,3 +3634,694 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .service-cta-title { font-size: 24px; }
   .service-hero-links { flex-direction: column; align-items: flex-start; }
 }
+
+/* =====================================================
+   CONTACT PAGE
+   ===================================================== */
+
+/* ── Contact Hero ── */
+.contact-hero {
+  padding-top: calc(var(--header-h) + 60px);
+  padding-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+  background: var(--clr-bg-soft);
+}
+.contact-hero-inner {
+  text-align: center;
+}
+.contact-page-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(72px, 14vw, 140px);
+  font-weight: 900;
+  letter-spacing: -4px;
+  line-height: 1;
+  color: var(--clr-primary);
+  margin-bottom: 12px;
+}
+.contact-page-sub {
+  font-size: 14px;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── Contact Layout (2-col) ── */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── Contact Left ── */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.contact-lead-title {
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--clr-primary);
+  margin-bottom: 16px;
+}
+.contact-lead-accent {
+  color: var(--clr-accent);
+}
+.contact-lead-desc {
+  font-size: 14px;
+  color: var(--clr-text-muted);
+  line-height: 1.9;
+}
+
+/* ── イラスト ── */
+.contact-illust {
+  position: relative;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ci-window {
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--clr-border);
+  overflow: hidden;
+  width: 220px;
+}
+.ci-win-bar {
+  background: var(--clr-bg-soft);
+  padding: 8px 12px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  border-bottom: 1px solid var(--clr-border);
+}
+.ci-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #ddd;
+}
+.ci-dot:nth-child(1) { background: #ff6057; }
+.ci-dot:nth-child(2) { background: #ffbd2e; }
+.ci-dot:nth-child(3) { background: #27c93f; }
+.ci-win-body {
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ci-bubble {
+  background: linear-gradient(135deg, #eef3ff 0%, #ede9ff 100%);
+  border-radius: 16px 16px 16px 4px;
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--clr-primary);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.ci-plane {
+  position: absolute;
+  pointer-events: none;
+}
+.ci-plane-1 {
+  width: 60px;
+  top: 10px;
+  left: 10px;
+  animation: floatPlane 6s ease-in-out infinite;
+}
+.ci-plane-2 {
+  width: 44px;
+  bottom: 20px;
+  right: 20px;
+  animation: floatPlane 5s ease-in-out infinite reverse;
+  animation-delay: 1s;
+}
+@keyframes floatPlane {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+.ci-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b9cf6, #8b7fd4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  animation: floatPlane 4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* ── その他のご連絡先カード ── */
+.contact-other-card {
+  background: #fff;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+}
+.coc-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.coc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.coc-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.coc-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--clr-accent-light);
+  color: var(--clr-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: transform .25s var(--ease), background .25s;
+}
+.coc-item:hover .coc-icon {
+  transform: scale(1.12);
+  background: var(--clr-accent);
+  color: #fff;
+}
+.coc-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.coc-label {
+  font-size: 11px;
+  color: var(--clr-text-muted);
+}
+.coc-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--clr-primary);
+  transition: color .2s;
+}
+a.coc-value:hover { color: var(--clr-accent); }
+
+/* ── Contact Form Card ── */
+.contact-form-card {
+  background: #fff;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+}
+.cfc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.cfc-header-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--clr-accent-light);
+  color: var(--clr-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.cfc-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--clr-primary);
+}
+
+/* ── Form Groups ── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.cf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cf-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--clr-primary);
+  cursor: pointer;
+}
+
+/* バッジ */
+.cf-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.cf-badge-required {
+  background: #fff0f0;
+  color: #e05252;
+}
+.cf-badge-optional {
+  background: var(--clr-bg-soft);
+  color: var(--clr-text-muted);
+}
+
+/* テキスト入力 */
+.cf-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--clr-primary);
+  background: var(--clr-bg-soft);
+  transition: border-color .2s, box-shadow .2s, background .2s;
+  outline: none;
+}
+.cf-input::placeholder { color: #bcc4d4; }
+.cf-input:focus {
+  border-color: var(--clr-accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(91,156,246,.15);
+}
+
+/* ラジオボタン */
+.cf-radio-group {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cf-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--clr-text);
+  cursor: pointer;
+  user-select: none;
+}
+.cf-radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+.cf-radio-custom {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--clr-border);
+  background: var(--clr-bg-soft);
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color .2s, background .2s;
+}
+.cf-radio-custom::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--clr-accent);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .2s, transform .2s var(--ease-spring);
+}
+.cf-radio-label input[type="radio"]:checked + .cf-radio-custom {
+  border-color: var(--clr-accent);
+  background: #fff;
+}
+.cf-radio-label input[type="radio"]:checked + .cf-radio-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.cf-radio-label:hover .cf-radio-custom {
+  border-color: var(--clr-accent);
+}
+
+/* セレクトボックス */
+.cf-select-wrap {
+  position: relative;
+}
+.cf-select {
+  width: 100%;
+  height: 48px;
+  padding: 0 40px 0 16px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--clr-primary);
+  background: var(--clr-bg-soft);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.cf-select:focus {
+  border-color: var(--clr-accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(91,156,246,.15);
+}
+.cf-select-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--clr-text-muted);
+  pointer-events: none;
+  transition: transform .2s;
+}
+.cf-select:focus + .cf-select-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* テキストエリア */
+.cf-textarea-wrap {
+  position: relative;
+}
+.cf-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--clr-primary);
+  background: var(--clr-bg-soft);
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.7;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.cf-textarea::placeholder { color: #bcc4d4; }
+.cf-textarea:focus {
+  border-color: var(--clr-accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(91,156,246,.15);
+}
+.cf-char-count {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  font-size: 11px;
+  color: var(--clr-text-muted);
+  pointer-events: none;
+}
+#charCount { font-weight: 600; color: var(--clr-text); }
+
+/* チェックボックス */
+.cf-group-privacy {
+  padding-top: 4px;
+}
+.cf-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.cf-checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+.cf-checkbox-custom {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--clr-border);
+  background: var(--clr-bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .2s, background .2s;
+}
+.cf-checkbox-custom::after {
+  content: '';
+  width: 9px; height: 5px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translateY(-1px);
+  opacity: 0;
+  transition: opacity .15s;
+}
+.cf-checkbox-label input[type="checkbox"]:checked + .cf-checkbox-custom {
+  background: var(--clr-accent);
+  border-color: var(--clr-accent);
+}
+.cf-checkbox-label input[type="checkbox"]:checked + .cf-checkbox-custom::after {
+  opacity: 1;
+}
+.cf-checkbox-text {
+  font-size: 13px;
+  color: var(--clr-text);
+}
+
+/* 送信ボタン */
+.cf-submit {
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: var(--radius-full);
+  margin-top: 4px;
+}
+.cf-submit i { font-size: 14px; }
+
+/* 送信後メッセージ */
+.cf-note {
+  font-size: 12px;
+  color: var(--clr-text-muted);
+  line-height: 1.8;
+  text-align: center;
+  padding-top: 4px;
+}
+
+/* ── FAQ (CONTACTページ) ── */
+.contact-faq {
+  background: var(--clr-bg-soft);
+}
+.contact-faq .section-header {
+  margin-bottom: 40px;
+}
+.section-line {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+.section-line svg {
+  width: 80px;
+}
+.contact-faq-item {
+  background: #fff;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow .25s;
+}
+.contact-faq-item:hover {
+  box-shadow: var(--shadow-sm);
+}
+.contact-faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background .2s;
+}
+.contact-faq-q:hover {
+  background: var(--clr-bg-soft);
+}
+.faq-q-badge {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--clr-accent-light);
+  color: var(--clr-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+}
+.faq-q-text {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--clr-primary);
+}
+.faq-q-icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--clr-text-muted);
+  transition: transform .35s var(--ease), border-color .2s, color .2s;
+}
+.contact-faq-q[aria-expanded="true"] .faq-q-icon {
+  transform: rotate(180deg);
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+.contact-faq-a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1), padding .35s;
+  padding: 0 24px;
+}
+.contact-faq-a:not([hidden]) {
+  padding-bottom: 20px;
+}
+.contact-faq-a p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--clr-text-muted);
+  padding-left: 48px;
+}
+
+/* ── SNS Section ── */
+.contact-sns {
+  background: var(--clr-bg);
+}
+.sns-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+.sns-link-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform .3s var(--ease-spring);
+}
+.sns-link-item:hover {
+  transform: translateY(-6px);
+}
+.sns-link-icon {
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+  transition: box-shadow .25s, transform .25s;
+  box-shadow: var(--shadow-sm);
+}
+.sns-link-item:hover .sns-link-icon {
+  box-shadow: var(--shadow-md);
+}
+.sns-icon-x        { background: #000; }
+.sns-icon-github   { background: #24292e; }
+.sns-icon-dribbble { background: #ea4c89; }
+.sns-icon-note     { background: #41c9b4; }
+.sns-link-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--clr-primary);
+}
+.sns-link-handle {
+  font-size: 11px;
+  color: var(--clr-text-muted);
+}
+
+/* ── ページトップへ戻るボタン ── */
+.page-top-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--clr-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: var(--shadow-md);
+  z-index: 900;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s, transform .3s, background .2s;
+  cursor: pointer;
+  border: none;
+}
+.page-top-btn.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-top-btn:hover {
+  background: var(--clr-accent);
+}
+
+/* ── Contact Responsive ── */
+@media (max-width: 1024px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+  .contact-right { max-width: 600px; margin: 0 auto; width: 100%; }
+}
+@media (max-width: 768px) {
+  .contact-page-title { font-size: clamp(60px, 18vw, 100px); letter-spacing: -3px; }
+  .contact-form-card { padding: 28px 20px; }
+  .cf-radio-group { gap: 16px; }
+  .sns-links { gap: 20px; }
+  .sns-link-icon { width: 58px; height: 58px; font-size: 20px; }
+  .contact-faq-q { padding: 16px 18px; }
+  .contact-faq-a p { padding-left: 0; }
+}
+@media (max-width: 480px) {
+  .contact-page-title { font-size: 56px; letter-spacing: -3px; }
+  .contact-hero { padding-top: calc(var(--header-h) + 40px); padding-bottom: 40px; }
+  .cf-radio-group { flex-direction: column; gap: 12px; }
+  .contact-form-card { padding: 24px 16px; }
+  .sns-links { gap: 16px; }
+}

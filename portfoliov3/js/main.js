@@ -966,6 +966,124 @@
 
   } // end page-service
 
+  /* =====================================================
+     19. CONTACT PAGE – インタラクション
+  ===================================================== */
+  if (document.body.classList.contains('page-contact')) {
+
+    /* ---- 19-a. テキストエリア 文字数カウント ---- */
+    const textarea  = $('#message');
+    const charCount = $('#charCount');
+    const MAX_CHARS = 3000;
+
+    if (textarea && charCount) {
+      textarea.addEventListener('input', () => {
+        const len = textarea.value.length;
+        charCount.textContent = len.toLocaleString('ja-JP');
+
+        if (len >= MAX_CHARS * 0.9) {
+          charCount.style.color = '#e05252';
+        } else if (len >= MAX_CHARS * 0.7) {
+          charCount.style.color = '#f59e0b';
+        } else {
+          charCount.style.color = '';
+        }
+      });
+    }
+
+    /* ---- 19-b. CONTACTページ FAQ アコーディオン ---- */
+    $$('.contact-faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const isOpen  = btn.getAttribute('aria-expanded') === 'true';
+        const faqItem = btn.closest('.contact-faq-item');
+        const answer  = faqItem.querySelector('.contact-faq-a');
+
+        /* 他のアコーディオンを閉じる */
+        $$('.contact-faq-item').forEach(item => {
+          if (item === faqItem) return;
+          const otherBtn = item.querySelector('.contact-faq-q');
+          const otherAns = item.querySelector('.contact-faq-a');
+          if (otherBtn.getAttribute('aria-expanded') === 'true') {
+            otherBtn.setAttribute('aria-expanded', 'false');
+            otherAns.style.maxHeight = '0px';
+            otherAns.style.paddingBottom = '0';
+            setTimeout(() => otherAns.setAttribute('hidden', ''), 420);
+          }
+        });
+
+        if (isOpen) {
+          btn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = '0px';
+          answer.style.paddingBottom = '0';
+          setTimeout(() => answer.setAttribute('hidden', ''), 420);
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          answer.removeAttribute('hidden');
+          requestAnimationFrame(() => {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            answer.style.paddingBottom = '20px';
+          });
+        }
+      });
+    });
+
+    /* ---- 19-c. ページトップへ戻るボタン ---- */
+    const pageTopBtn = $('#pageTopBtn');
+    if (pageTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          pageTopBtn.classList.add('is-visible');
+        } else {
+          pageTopBtn.classList.remove('is-visible');
+        }
+      }, { passive: true });
+
+      pageTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    /* ---- 19-d. スクロール進捗バー ---- */
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.prepend(progressBar);
+    window.addEventListener('scroll', () => {
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (docH > 0 ? window.scrollY / docH * 100 : 0) + '%';
+    }, { passive: true });
+
+    /* ---- 19-e. SNSリンク ホバーインタラクション ---- */
+    if (!isMobile() && !prefersReducedMotion) {
+      $$('.sns-link-item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          item.style.transition = 'transform .3s cubic-bezier(.34,1.56,.64,1)';
+        });
+      });
+    }
+
+    /* ---- 19-f. フォーム送信インタラクション ---- */
+    const form = $('#contactForm');
+    if (form) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('.cf-submit');
+        if (!submitBtn) return;
+
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 送信中...';
+
+        /* デモ: 2秒後に完了 */
+        setTimeout(() => {
+          submitBtn.innerHTML = '<i class="fas fa-check"></i> 送信完了！';
+          submitBtn.style.background = 'linear-gradient(135deg, #4ecb8d, #27ae60)';
+          submitBtn.style.opacity = '1';
+        }, 2000);
+      });
+    }
+
+  } // end page-contact
+
 })();
 
 
